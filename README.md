@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/Cyb3r-Jak3/notification_relay/master/.github/icon.png" alt="notification_relay logo"/> </p>
+<p align="center"><img src="https://raw.githubusercontent.com/Cyb3r-Jak3/notification_relay/main/.github/icon.png" alt="notification_relay logo"/> </p>
 
 ## About
 
