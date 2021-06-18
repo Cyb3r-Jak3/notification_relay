@@ -46,6 +46,7 @@ jobs:
         run: |
           go get -u golang.org/x/lint/golint
           go get -u github.com/securego/gosec/v2/cmd/gosec@v2.8.0
+          go get ./...
 
       - name: Lint
         run: make lint
