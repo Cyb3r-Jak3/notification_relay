@@ -67,7 +67,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Report
-          path: security.sarif
+          path: |
+            security.sarif
+            security.json
 
 #      - name: Coverage to Deepsource
 #        if: ${{ runner.os == 'Linux' && env.DEEPSOURCE_DSN != null }}
