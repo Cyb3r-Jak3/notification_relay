@@ -40,7 +40,7 @@ var configPath string
 type Client struct {
 	*github.Client
 	// Conf is the run time configuration
-	Conf    *Config
+	Conf *Config
 	// Context is a context.Context that is passed to the github.Client.
 	Context context.Context
 }
@@ -48,26 +48,27 @@ type Client struct {
 // Config holds the configuration that is parsed from the configuration file provided
 type Config struct {
 	// IntervalTime is the time in seconds between sending webhooks. Helps with rate limiting
-	IntervalTime  int64    `json:"interval_time" yaml:"interval_time" default:"3"`
+	IntervalTime int64 `json:"interval_time" yaml:"interval_time" default:"3"`
 	// Notifications are the NotificationReasons that are selected to be sent
 	Notifications []string `json:"notification_types" yaml:"notification_types" default:"[assign,author,comment,invitation,manual,mention,review_requested,security_alert,state_change,subscribed,team_mention]"`
 	// SleepDuration is the time in seconds between each pull of notifications. The sleep time includes the pull of notifications and any interval time
-	SleepDuration int64    `json:"sleep_duration" yaml:"sleep_duration" default:"600"`
+	SleepDuration int64 `json:"sleep_duration" yaml:"sleep_duration" default:"600"`
 	// AllowUnread pulls all notifications and not just unread ones
-	AllowUnread   bool     `json:"allow_unread" yaml:"allow_unread" default:"false"`
+	AllowUnread bool `json:"allow_unread" yaml:"allow_unread" default:"false"`
 	//GithubToken is the Personal Access Token that is used to authenticate with GitHub. It is **HIGHLY** recommended to pass this as a environment variable
-	GithubToken   string `json:"github-token" yaml:"github-token" default:""`
+	GithubToken string `json:"github-token" yaml:"github-token" default:""`
 	// WebhookURL is the URL to send all the notifications to
-	WebhookURL    string `json:"discord_url" yaml:"discord_url"`
+	WebhookURL string `json:"discord_url" yaml:"discord_url"`
 }
+
 // WebhookMessage is the layout of the message that gets POSTed
 type WebhookMessage struct {
 	//Username is the username that is webhook is sent with
-	Username string          `json:"username"`
+	Username string `json:"username"`
 	//Avatar is the URL of the image that the webhook is sent with
-	Avatar   string          `json:"avatar_url,omitempty"`
+	Avatar string `json:"avatar_url,omitempty"`
 	//Embeds are a list of Embeds that are sent in the webhook
-	Embed    []discord.Embed `json:"embeds,omitempty"`
+	Embed []discord.Embed `json:"embeds,omitempty"`
 }
 
 func setup(conf Config) (c *Client) {
@@ -116,7 +117,6 @@ func generatemessage(c *Client, notification *github.Notification) WebhookMessag
 		},
 	}
 }
-
 
 func parseconfig(fileName string) (*Config, error) {
 	conf := new(Config)
@@ -168,9 +168,9 @@ func loop(c *Client) {
 				}
 			}
 			log.Debugf("Have %d messages to send", len(messages))
-			for _, n := range messages {
-				log.Tracef("Sending %+v", n)
-				if _, err := common.DoJSONRequest("POST", c.Conf.WebhookURL, &n, nil); err != nil {
+			for i := range messages {
+				log.Tracef("Sending %+v", messages[i])
+				if _, err := common.DoJSONRequest("POST", c.Conf.WebhookURL, &messages[i], nil); err != nil {
 					log.WithError(err).Error("Error sending discord payload")
 				}
 				time.Sleep(time.Duration(c.Conf.IntervalTime) * time.Second)
