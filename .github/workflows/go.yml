@@ -58,16 +58,16 @@ jobs:
       - name: Gosec Security Scanner
         run: make scan
 
-      - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: security.sarif
-
       - name: GoSec Report
         uses: actions/upload-artifact@v2
         with:
           name: Report
           path: security.sarif
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: security.sarif
 
 #      - name: Coverage to Deepsource
 #        if: ${{ runner.os == 'Linux' && env.DEEPSOURCE_DSN != null }}
