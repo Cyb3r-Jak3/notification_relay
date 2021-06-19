@@ -8,7 +8,7 @@ ENV CGO_ENABLED=0
 
 RUN go build -o /go/bin/app
 
-FROM gcr.io/distroless/static
+FROM gcr.io/distroless/static:latest
 COPY --from=build /go/bin/app /.
 ENTRYPOINT ["/app"]
 CMD [ "$@" ]
