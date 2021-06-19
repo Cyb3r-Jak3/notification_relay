@@ -68,11 +68,3 @@ jobs:
         uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: security.sarif
-
-#      - name: Coverage to Deepsource
-#        if: ${{ runner.os == 'Linux' && env.DEEPSOURCE_DSN != null }}
-#        run: |
-#          curl https://deepsource.io/cli | sh
-#          ./bin/deepsource report --analyzer test-coverage --key go --value-file c.out
-#        env:
-#          DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
