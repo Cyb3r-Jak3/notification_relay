@@ -67,10 +67,10 @@ dockers:
       - "--label=org.opencontainers.image.source=https://github.com/Cyb3r-Jak3/notification_relay"
 
 docker_manifests:
-  - name_template: ghcr.io/cyb3r-jak3/notification_relay:{{ .Version }}
-    image_templates:
-      - ghcr.io/cyb3r-jak3/notification_relay:{{ .Version }}
-      - ghcr.io/cyb3r-jak3/notification_relay:{{ .Version }}-arm64v8
+  # - name_template: ghcr.io/cyb3r-jak3/notification_relay:{{ .Version }}
+  #   image_templates:
+  #     - ghcr.io/cyb3r-jak3/notification_relay:{{ .Version }}
+  #     - ghcr.io/cyb3r-jak3/notification_relay:{{ .Version }}-arm64v8
   - name_template: cyb3r-jak3/notification_relay:{{ .Version }}
     image_templates:
       - cyb3rjak3/notification_relay:{{ .Version }}
