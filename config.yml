@@ -1,0 +1,16 @@
+interval_time: 300 # int
+discord_url: https://discord.com/api/webhooks/<string>/<string> # string
+notification_types: # list
+  - assign
+  - author
+  - comment
+  - invitation
+  - manual
+  - mention
+  - review_requested
+  - security_alert
+  - state_change
+  - subscribed
+  - team_mention
+sleep_duration: 5 # int
+allow_unread: true # bool

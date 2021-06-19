@@ -1,0 +1,78 @@
+name: Test Go
+
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - '**'
+    paths:
+      - '**.go'
+      - .github/workflows/go.yml
+      - "go.mod"
+      - "go.sum"
+
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      GO111MODULE: on
+
+    steps:
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.16
+
+      - uses: actions/cache@v2.1.6
+        with:
+          path: |
+            ~/go/pkg/mod
+            ~/.cache/go-build
+            ~/Library/Caches/go-build
+            %LocalAppData%\go-build
+          key: ${{ runner.os }}-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Extra
+        run: |
+          go get -u golang.org/x/lint/golint
+          go get -u github.com/securego/gosec/v2/cmd/gosec@v2.8.0
+          go get ./...
+
+      - name: Lint
+        run: make lint
+
+#      Ignoring until I write tests
+#      - name: Test
+#        run: make test
+
+      - name: Gosec Security Scanner
+        run: make scan
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: security.sarif
+
+      - name: GoSec Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: Report
+          path: security.sarif
+
+#      - name: Coverage to Deepsource
+#        if: ${{ runner.os == 'Linux' && env.DEEPSOURCE_DSN != null }}
+#        run: |
+#          curl https://deepsource.io/cli | sh
+#          ./bin/deepsource report --analyzer test-coverage --key go --value-file c.out
+#        env:
+#          DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}

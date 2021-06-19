@@ -1,0 +1,84 @@
+project_name: notification_relay
+before:
+  hooks:
+    - go mod tidy
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+archives:
+  - replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+dockers:
+  -
+    image_templates:
+      - "ghcr.io/cyb3r-jak3/notification_relay:latest"
+      - "ghcr.io/cyb3r-jak3/notification_relay:{{ .Tag }}"
+      - "ghcr.io/cyb3r-jak3/notification_relay:v{{ .Major }}"
+      - "cyb3rjak3/notification_relay:latest"
+      - "cyb3rjak3/notification_relay:{{ .Tag }}"
+      - "cyb3rjak3/notification_relay:v{{ .Major }}"
+    goarch: amd64
+    dockerfile: release.Dockerfile
+    use_buildx: true
+    build_flag_templates:
+      - "--platform=linux/amd64"
+      - "--label=org.opencontainers.image.created={{ .Date }}"
+      - "--label=org.opencontainers.image.revision={{ .FullCommit }}"
+      - "--label=org.opencontainers.image.version={{ .Version }}"
+      - "--label=org.opencontainers.image.title={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.source=https://github.com/Cyb3r-Jak3/notification_relay"
+
+  -
+    image_templates:
+      - "cyb3rjak3/notification_relay:latest-arm64v8"
+      - "cyb3rjak3/notification_relay:{{ .Tag }}-arm64v8"
+      - "cyb3rjak3/notification_relay:v{{ .Major }}-arm64v8"
+      - "ghcr.io/cyb3r-jak3/notification_relay:latest-arm64v8"
+      - "ghcr.io/cyb3r-jak3/notification_relay:{{ .Tag }}-arm64v8"
+      - "ghcr.io/cyb3r-jak3/notification_relay:v{{ .Major }}-arm64v8"
+    goarch: arm64
+    dockerfile: release.Dockerfile
+    use_buildx: true
+    build_flag_templates:
+      - "--platform=linux/arm64/v8"
+      - "--label=org.opencontainers.image.created={{ .Date }}"
+      - "--label=org.opencontainers.image.title={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.revision={{ .FullCommit }}"
+      - "--label=org.opencontainers.image.version={{ .Version }}"
+      - "--label=org.opencontainers.image.source=https://github.com/Cyb3r-Jak3/notification_relay"
+
+docker_manifests:
+  - name_template: ghcr.io/cyb3r-jak3/notification_relay:{{ .Version }}
+    image_templates:
+      - ghcr.io/cyb3r-jak3/notification_relay:{{ .Version }}
+      - ghcr.io/cyb3r-jak3/notification_relay:{{ .Version }}-arm64v8
+  - name_template: cyb3r-jak3/notification_relay:{{ .Version }}
+    image_templates:
+      - cyb3rjak3/notification_relay:{{ .Version }}
+      - cyb3rjak3/notification_relay:{{ .Version }}-arm64v8
+
+signs:
+  - artifacts: all
+    args: ["--batch", "-u", "{{ .Env.GPG_FINGERPRINT }}", "--output", "${signature}", "--detach-sign", "${artifact}"]
+
+release:
+  draft: true
