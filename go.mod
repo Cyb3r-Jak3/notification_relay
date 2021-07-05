@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	github.com/Cyb3r-Jak3/common v0.1.1
-	github.com/JohannesKaufmann/html-to-markdown v1.2.1
+	github.com/JohannesKaufmann/html-to-markdown v1.3.0
 	github.com/google/go-github/v35 v35.3.0
 	github.com/mcuadros/go-defaults v1.2.0
 	github.com/nickname32/discordhook v1.0.2
