@@ -36,8 +36,8 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/Cyb3r-Jak3/common v0.1.1 h1:igClXoOa8WoUN+xZNCBSvjwIGu+uypnCzrLLtxiOE2c=
 github.com/Cyb3r-Jak3/common v0.1.1/go.mod h1:cZCt43kS7xMoOmVKiNPyVzc94ICPijOJGUwACZKCPWw=
-github.com/JohannesKaufmann/html-to-markdown v1.2.1 h1:VgNHWizxsocCx99W8VOd6NkGLQsq7tzRWcGdxP65RpQ=
-github.com/JohannesKaufmann/html-to-markdown v1.2.1/go.mod h1:JNSClIRYICFDiFhw6RBhBeWGnMSSKVZ6sPQA+TK4tyM=
+github.com/JohannesKaufmann/html-to-markdown v1.3.0 h1:K/p4cq8Ib13hcSVcKQNfKCSWw93CYW5pAjY0fl85has=
+github.com/JohannesKaufmann/html-to-markdown v1.3.0/go.mod h1:JNSClIRYICFDiFhw6RBhBeWGnMSSKVZ6sPQA+TK4tyM=
 github.com/PuerkitoBio/goquery v1.5.1 h1:PSPBGne8NIUWw+/7vFBV+kG2J/5MOjbzc7154OaKCSE=
 github.com/PuerkitoBio/goquery v1.5.1/go.mod h1:GsLWisAFVj4WgDibEWF4pvYnkVQBpKBKeU+7zCJoLcc=
 github.com/alecthomas/gometalinter v2.0.10+incompatible/go.mod h1:qfIpQGGz3d+NmgyPBqv+LSh50emm1pt72EtcX2vKYQk=
