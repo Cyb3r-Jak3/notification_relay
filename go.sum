@@ -34,8 +34,8 @@ cloud.google.com/go/storage v1.10.0/go.mod h1:FLPqc6j+Ki4BU591ie1oL6qBQGu2Bl/tZ9
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
-github.com/Cyb3r-Jak3/common v0.1.1 h1:igClXoOa8WoUN+xZNCBSvjwIGu+uypnCzrLLtxiOE2c=
-github.com/Cyb3r-Jak3/common v0.1.1/go.mod h1:cZCt43kS7xMoOmVKiNPyVzc94ICPijOJGUwACZKCPWw=
+github.com/Cyb3r-Jak3/common v0.1.3 h1:lCkTGQXFcC1sgtNad+GEDpdRyw5JADYhZqDpukSWqVc=
+github.com/Cyb3r-Jak3/common v0.1.3/go.mod h1:cZCt43kS7xMoOmVKiNPyVzc94ICPijOJGUwACZKCPWw=
 github.com/JohannesKaufmann/html-to-markdown v1.3.0 h1:K/p4cq8Ib13hcSVcKQNfKCSWw93CYW5pAjY0fl85has=
 github.com/JohannesKaufmann/html-to-markdown v1.3.0/go.mod h1:JNSClIRYICFDiFhw6RBhBeWGnMSSKVZ6sPQA+TK4tyM=
 github.com/PuerkitoBio/goquery v1.5.1 h1:PSPBGne8NIUWw+/7vFBV+kG2J/5MOjbzc7154OaKCSE=
