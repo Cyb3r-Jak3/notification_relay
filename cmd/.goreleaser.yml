@@ -2,6 +2,7 @@ project_name: notification_relay
 before:
   hooks:
     - go mod tidy
+    - cp ../LICENSE .
 builds:
   - env:
       - CGO_ENABLED=0
