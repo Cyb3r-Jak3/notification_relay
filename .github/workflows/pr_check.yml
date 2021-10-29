@@ -43,7 +43,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
 
-      - name: dist artifacts
+      - name: Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: GoReleaser
