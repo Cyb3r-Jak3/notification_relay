@@ -10,8 +10,14 @@ import (
 	"os"
 )
 
-var log = logrus.New()
-var configPath string
+var (
+	version    = "dev"     //nolint
+	commit     = "none"    //nolint
+	date       = "unknown" //nolint
+	builtBy    = "unknown" //nolint
+	log        = logrus.New()
+	configPath string
+)
 
 // Client holds all the information when running. Has the config, context and expands the github.Client
 type Client struct {
@@ -66,12 +72,13 @@ func setup(conf Config) (c *Client) {
 
 func main() {
 	app := &cli.App{
-		Name:  "Notification Relay",
-		Usage: "Get notifications and relay them as webhooks POST",
+		Name:    "Notification Relay",
+		Usage:   fmt.Sprinf("Get notifications and relay them as webhooks POST\n, Commit: %s Date: %s Build By: %s", commit, date, builtBy),
+		Version: version,
 		Authors: []*cli.Author{
 			{
 				Name:  "Cyb3r-Jak3",
-				Email: "jake@jwhite.network",
+				Email: "cyb3rjak3@pm.me",
 			},
 		},
 		Flags: []cli.Flag{
