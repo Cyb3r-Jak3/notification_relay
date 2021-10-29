@@ -15,7 +15,6 @@ on:
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
-    if: ${{ startsWith(github.ref, 'refs/tags/v') }}
     steps:
 
       - 
@@ -59,6 +58,7 @@ jobs:
         with:
           version: latest
           args: release --rm-dist
+          workdir: cmd/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
