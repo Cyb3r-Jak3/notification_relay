@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"github.com/bwmarrin/discordgo"
 	"github.com/google/go-github/v39/github"
 	"github.com/sirupsen/logrus"
