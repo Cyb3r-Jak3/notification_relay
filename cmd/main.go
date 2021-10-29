@@ -74,7 +74,7 @@ func setup(conf Config) (c *Client) {
 func main() {
 	app := &cli.App{
 		Name:    "Notification Relay",
-		Usage:   fmt.Sprinf("Get notifications and relay them as webhooks POST\n, Commit: %s Date: %s Build By: %s", commit, date, builtBy),
+		Usage:   fmt.Sprintf("Get notifications and relay them as webhooks POST\n, Commit: %s Date: %s Build By: %s", commit, date, builtBy),
 		Version: version,
 		Authors: []*cli.Author{
 			{
@@ -98,7 +98,7 @@ func main() {
 			&cli.BoolFlag{
 				Name:    "verbose",
 				EnvVars: []string{"LOG_LEVEL_INFO"},
-				Aliases: []string{"v"},
+				//Aliases: []string{"v"},
 			},
 			&cli.BoolFlag{
 				Name:    "trace",
