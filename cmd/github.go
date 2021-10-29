@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	md "github.com/JohannesKaufmann/html-to-markdown"
-	"github.com/google/go-github/v39/github"
 	"github.com/bwmarrin/discordgo"
+	"github.com/google/go-github/v39/github"
 )
 
 // NotificationReasons are valid GitHub notification reasons.

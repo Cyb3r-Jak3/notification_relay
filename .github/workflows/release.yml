@@ -8,7 +8,7 @@ on:
       - 'v*.*.*'
     paths:
       - ".github/workflows/release.yml"
-      - ".goreleaser.yml"
+      - "cmd/.goreleaser.yml"
   pull_request:
     branches:
       - main

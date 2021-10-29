@@ -2,15 +2,13 @@ package main
 
 import (
 	"context"
+	"github.com/bwmarrin/discordgo"
 	"github.com/google/go-github/v39/github"
 	"github.com/sirupsen/logrus"
 	"github.com/urfave/cli/v2"
 	"golang.org/x/oauth2"
 	"os"
-	"github.com/bwmarrin/discordgo"
 )
-
-
 
 var log = logrus.New()
 var configPath string
