@@ -31,7 +31,6 @@ func run(c *cli.Context) error {
 	return nil
 }
 
-
 func loop(c *Client) {
 	var latestTime time.Time
 	log.Debug("Starting loop")

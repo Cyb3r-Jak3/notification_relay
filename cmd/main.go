@@ -94,7 +94,7 @@ func main() {
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:        "config",
-				Aliases: []string{"c"},
+				Aliases:     []string{"c"},
 				Value:       "./config.yml",
 				Usage:       "Path to the configuration file",
 				Destination: &configPath,
