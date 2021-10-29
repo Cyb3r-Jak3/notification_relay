@@ -5,7 +5,7 @@ on:
     tags:
       - 'v*.*.*'
     paths:
-      - ".github/workflows/pr_check.yml"
+      - ".github/workflows/release.yml"
       - ".goreleaser.yml"
   pull_request:
     branches:
