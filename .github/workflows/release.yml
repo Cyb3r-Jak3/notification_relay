@@ -2,6 +2,8 @@ name: GoReleaser
 
 on:
   push:
+    branches:
+      - '**'
     tags:
       - 'v*.*.*'
     paths:
