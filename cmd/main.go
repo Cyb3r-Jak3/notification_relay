@@ -3,29 +3,14 @@ package main
 import (
 	"context"
 	"github.com/google/go-github/v39/github"
-	discord "github.com/nickname32/discordhook"
 	"github.com/sirupsen/logrus"
 	"github.com/urfave/cli/v2"
 	"golang.org/x/oauth2"
 	"os"
+	"github.com/bwmarrin/discordgo"
 )
 
-// NotificationReasons are valid GitHub notification reasons.
-//
-// https://docs.github.com/en/rest/reference/activity#notification-reasons
-var NotificationReasons = []string{
-	"assign",
-	"author",
-	"comment",
-	"invitation",
-	"manual",
-	"mention",
-	"review_requested",
-	"security_alert",
-	"state_change",
-	"subscribed",
-	"team_mention",
-}
+
 
 var log = logrus.New()
 var configPath string
@@ -62,7 +47,7 @@ type WebhookMessage struct {
 	//Avatar is the URL of the image that the webhook is sent with
 	Avatar string `json:"avatar_url,omitempty"`
 	//Embeds are a list of Embeds that are sent in the webhook
-	Embed []discord.Embed `json:"embeds,omitempty"`
+	Embed []discordgo.MessageEmbed `json:"embeds,omitempty"`
 }
 
 func setup(conf Config) (c *Client) {
@@ -76,7 +61,7 @@ func setup(conf Config) (c *Client) {
 	}
 	_, _, err := c.Repositories.List(c.Context, "", nil)
 	if err != nil {
-		log.WithError(err).Fatalf("Got an error when checking authication")
+		log.WithError(err).Fatalf("Got an error when checking authorization")
 	}
 	return
 }

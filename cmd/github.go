@@ -4,8 +4,25 @@ import (
 	"fmt"
 	md "github.com/JohannesKaufmann/html-to-markdown"
 	"github.com/google/go-github/v39/github"
-	discord "github.com/nickname32/discordhook"
+	"github.com/bwmarrin/discordgo"
 )
+
+// NotificationReasons are valid GitHub notification reasons.
+//
+// https://docs.github.com/en/rest/reference/activity#notification-reasons
+var NotificationReasons = []string{
+	"assign",
+	"author",
+	"comment",
+	"invitation",
+	"manual",
+	"mention",
+	"review_requested",
+	"security_alert",
+	"state_change",
+	"subscribed",
+	"team_mention",
+}
 
 func generateMessage(c *Client, notification *github.Notification) WebhookMessage {
 	req, _ := c.NewRequest("GET", *notification.Subject.LatestCommentURL, nil)
@@ -24,13 +41,13 @@ func generateMessage(c *Client, notification *github.Notification) WebhookMessag
 	return WebhookMessage{
 		Avatar:   notification.Repository.Owner.GetAvatarURL(),
 		Username: "Notification Relay",
-		Embed: []discord.Embed{
+		Embed: []discordgo.MessageEmbed{
 			{
 				Title:       fmt.Sprintf("New %s", notification.Subject.GetType()),
 				URL:         httpURL,
 				Description: body,
-				Timestamp:   comment.UpdatedAt,
-				Thumbnail: &discord.EmbedThumbnail{
+				Timestamp:   comment.UpdatedAt.Format("RFC1123"),
+				Thumbnail: &discordgo.MessageEmbedThumbnail{
 					URL: comment.User.GetAvatarURL(),
 				},
 			},
