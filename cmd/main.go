@@ -20,12 +20,12 @@ var (
 	configPath string
 )
 
-// Client holds all the information when running. Has the config, context and expands the github.Client
+// Client holds all the information when running. Has the config, context and expands the GitHub.Client
 type Client struct {
 	*github.Client
 	// Conf is the run time configuration
 	Conf *Config
-	// Context is a context.Context that is passed to the github.Client.
+	// Context is a context.Context that is passed to the GitHub.Client.
 	Context context.Context
 }
 
