@@ -26,7 +26,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.16
+          go-version: 1.17
 
       - uses: actions/cache@v2.1.6
         with:
@@ -44,12 +44,9 @@ jobs:
 
       - name: Setup Extra
         run: |
-          go get -u golang.org/x/lint/golint
-          go get -u github.com/securego/gosec/v2/cmd/gosec@v2.8.0
+          go get -u github.com/securego/gosec/v2/cmd/gosec@latest
           go get ./...
 
-      - name: Lint
-        run: make lint
 
 #      Ignoring until I write tests
 #      - name: Test

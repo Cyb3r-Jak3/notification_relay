@@ -2,6 +2,7 @@ project_name: notification_relay
 before:
   hooks:
     - go mod tidy
+    - cp ../LICENSE .
 builds:
   - env:
       - CGO_ENABLED=0
@@ -9,6 +10,11 @@ builds:
       - linux
       - windows
       - darwin
+    goarch:
+      - amd64
+      - arm
+      - arm64
+    binary: notification_relay
 archives:
   - replacements:
       darwin: Darwin
@@ -16,6 +22,11 @@ archives:
       windows: Windows
       386: i386
       amd64: x86_64
+    format: tar.xz
+    format_overrides:
+      - goos: windows
+        format: zip
+    name_template: "{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}{{ if .Mips }}_{{ .Mips }}{{ end }}"
 checksum:
   name_template: 'checksums.txt'
 snapshot:
@@ -37,8 +48,8 @@ dockers:
       - "cyb3rjak3/notification_relay:{{ .Tag }}"
       - "cyb3rjak3/notification_relay:v{{ .Major }}"
     goarch: amd64
-    dockerfile: release.Dockerfile
-    use_buildx: true
+    dockerfile: ../release.Dockerfile
+    use: buildx
     build_flag_templates:
       - "--platform=linux/amd64"
       - "--label=org.opencontainers.image.created={{ .Date }}"
@@ -56,8 +67,8 @@ dockers:
       - "ghcr.io/cyb3r-jak3/notification_relay:{{ .Tag }}-arm64v8"
       - "ghcr.io/cyb3r-jak3/notification_relay:v{{ .Major }}-arm64v8"
     goarch: arm64
-    dockerfile: release.Dockerfile
-    use_buildx: true
+    dockerfile: ../release.Dockerfile
+    use: buildx
     build_flag_templates:
       - "--platform=linux/arm64/v8"
       - "--label=org.opencontainers.image.created={{ .Date }}"
