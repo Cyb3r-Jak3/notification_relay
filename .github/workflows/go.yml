@@ -56,7 +56,7 @@ jobs:
         run: make scan
 
       - name: GoSec Report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Report
           path: security.sarif
