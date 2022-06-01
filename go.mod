@@ -9,7 +9,7 @@ require (
 	github.com/google/go-github/v39 v39.2.0
 	github.com/mcuadros/go-defaults v1.2.0
 	github.com/sirupsen/logrus v1.8.1
-	github.com/urfave/cli/v2 v2.5.1
+	github.com/urfave/cli/v2 v2.8.1
 	golang.org/x/oauth2 v0.0.0-20210514164344-f6687ab2804c
 )
 
@@ -21,6 +21,7 @@ require (
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
+	github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 // indirect
 	golang.org/x/crypto v0.0.0-20210817164053-32db794688a5 // indirect
 	golang.org/x/net v0.0.0-20210226172049-e18ecbb05110 // indirect
 	golang.org/x/sys v0.0.0-20210615035016-665e8c7367d1 // indirect
