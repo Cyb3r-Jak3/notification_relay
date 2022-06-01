@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/Cyb3r-Jak3/common/v3 v3.0.0-20211021163845-fe6144e9adfb
-	github.com/JohannesKaufmann/html-to-markdown v1.3.3
+	github.com/JohannesKaufmann/html-to-markdown v1.3.4
 	github.com/bwmarrin/discordgo v0.25.0
 	github.com/google/go-github/v39 v39.2.0
 	github.com/mcuadros/go-defaults v1.2.0
