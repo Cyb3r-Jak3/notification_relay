@@ -9,14 +9,14 @@ require (
 	github.com/google/go-github/v39 v39.2.0
 	github.com/mcuadros/go-defaults v1.2.0
 	github.com/sirupsen/logrus v1.8.1
-	github.com/urfave/cli/v2 v2.8.1
+	github.com/urfave/cli/v2 v2.10.3
 	golang.org/x/oauth2 v0.0.0-20210514164344-f6687ab2804c
 )
 
 require (
 	github.com/PuerkitoBio/goquery v1.5.1 // indirect
 	github.com/andybalholm/cascadia v1.1.0 // indirect
-	github.com/cpuguy83/go-md2man/v2 v2.0.1 // indirect
+	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
 	github.com/golang/protobuf v1.4.2 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
